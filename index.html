@@ -688,6 +688,26 @@ footer{background:#1d0a15;color:rgba(255,255,255,.7);font-size:14px}
 </div>
 
 <script>
+/* ============ EDIT YOUR NUMBERS HERE ============
+   Change the numbers and the date, then save. Everything on the page updates. */
+var MY_NUMBERS = {
+  facebook: 6606,
+  instagram: 5540,
+  youtube: 318,
+  updated: "25 November 2026"
+};
+/* ================================================ */
+(function(){
+  var n=MY_NUMBERS,fmt=function(x){return Number(x).toLocaleString('en-US')};
+  var nums=document.querySelectorAll('.num[data-count]'),vals=[n.facebook,n.instagram,n.youtube];
+  for(var i=0;i<nums.length;i++){nums[i].dataset.count=vals[i];nums[i].textContent=fmt(vals[i])+'+';}
+  var total=n.facebook+n.instagram+n.youtube,round=Math.floor(total/1000)*1000;
+  var b=document.querySelector('.badge.b2 b');if(b)b.textContent=fmt(round)+'+';
+  var p=document.querySelector('#social .sec-head p');if(p)p.textContent='More than '+fmt(round)+' followers and subscribers across three platforms.';
+  var note=document.querySelector('.stat-note');if(note)note.textContent='Follower figures as supplied by Henrietta, '+n.updated+'.';
+})();
+</script>
+<script>
 (function(){
   var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
